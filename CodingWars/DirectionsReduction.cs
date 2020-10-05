@@ -72,75 +72,75 @@ namespace CodeWarsKatas
      */
 	public static class DirectionsReduction
 	{
-        public static string[] DirReduc(String[] arr)
-        {
-            string dirString = "";
+		public static string[] DirReduc(String[] arr)
+		{
+			string dirString = "";
 			for (int i = 0; i < arr.Length; i++)
 			{
-                dirString += arr[i][0];
+				dirString += arr[i][0];
 			}
 			dirString.ToUpper();
-            bool changedSomething = false;
+			bool changedSomething = false;
 			do
 			{
 				changedSomething = false;
 				if (dirString.Contains("NS"))
 				{
 					changedSomething = true;
-                    dirString = dirString.Replace("NS", "");
+					dirString = dirString.Replace("NS", "");
 				}
 				if (dirString.Contains("SN"))
 				{
 					changedSomething = true;
-                    dirString = dirString.Replace("SN", "");
+					dirString = dirString.Replace("SN", "");
 				}
 				if (dirString.Contains("EW"))
 				{
 					changedSomething = true;
-                    dirString = dirString.Replace("EW", "");
+					dirString = dirString.Replace("EW", "");
 				}
 				if (dirString.Contains("WE"))
 				{
 					changedSomething = true;
-                    dirString = dirString.Replace("WE", "");
+					dirString = dirString.Replace("WE", "");
 				}
 			} while (changedSomething);
 
-            String[] returnDirections = new String[dirString.Length];
-            for (int i = 0; i < dirString.Length; i++)
+			String[] returnDirections = new String[dirString.Length];
+			for (int i = 0; i < dirString.Length; i++)
 			{
-                returnDirections[i] = dirString[i] switch
-                {
-                    'N' => "NORTH",
-                    'S' => "SOUTH",
-                    'E' => "EAST",
-                    'W' => "WEST",
-                    _ => ""
-                };
+				returnDirections[i] = dirString[i] switch
+				{
+					'N' => "NORTH",
+					'S' => "SOUTH",
+					'E' => "EAST",
+					'W' => "WEST",
+					_ => ""
+				};
 			}
 
-            return returnDirections;
-        }
+			return returnDirections;
+		}
 
-    }
+	}
 
-    [TestFixture]
-    public class DirReductionTests
-    {
+	[TestFixture]
+	public class DirReductionTests
+	{
 
-        [Test]
-        public void Test1()
-        {
-            string[] a = new string[] { "NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST" };
-            string[] b = new string[] { "WEST" };
-            Assert.AreEqual(b, DirectionsReduction.DirReduc(a));
-        }
-        [Test]
-        public void Test2()
-        {
-            string[] a = new string[] { "NORTH", "WEST", "SOUTH", "EAST" };
-            string[] b = new string[] { "NORTH", "WEST", "SOUTH", "EAST" };
-            Assert.AreEqual(b, DirectionsReduction.DirReduc(a));
-        }
-    }
+		[Test]
+		public void Test1()
+		{
+			string[] a = new string[] { "NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST" };
+			string[] b = new string[] { "WEST" };
+			Assert.AreEqual(b, DirectionsReduction.DirReduc(a));
+		}
+		[Test]
+		public void Test2()
+		{
+			string[] a = new string[] { "NORTH", "WEST", "SOUTH", "EAST" };
+			string[] b = new string[] { "NORTH", "WEST", "SOUTH", "EAST" };
+			Assert.AreEqual(b, DirectionsReduction.DirReduc(a));
+		}
+	}
 }

@@ -82,7 +82,7 @@ namespace Codingame
 		}
 	}
 
-	 static class ACoinGuessingGameSolution
+	static class ACoinGuessingGameSolution
 	{
 
 		public static string ACoinGuessingGame(string[] lineInputs)
@@ -166,9 +166,9 @@ namespace Codingame
 	public class ACoinGuessingGameTests
 	{
 		[Theory]
-		[InlineData(new string[] {"2 3", "4 2", "2 4", "4 3"}, "4 2")]
-		[InlineData(new string[] {"3 2", "3 1 6", "4 1 6"}, "2 4 6")]
-		[InlineData(new string[] {"5 4", "2 10 6 3 5", "5 1 9 3 2", "9 8 10 4 7", "4 1 9 5 2" }, "10 4 8 2 6")]
+		[InlineData(new string[] { "2 3", "4 2", "2 4", "4 3" }, "4 2")]
+		[InlineData(new string[] { "3 2", "3 1 6", "4 1 6" }, "2 4 6")]
+		[InlineData(new string[] { "5 4", "2 10 6 3 5", "5 1 9 3 2", "9 8 10 4 7", "4 1 9 5 2" }, "10 4 8 2 6")]
 		public void CoinGuess_ShouldBe_Correct(string[] inputs, string expected)
 		{
 			Assert.Equal(ACoinGuessingGameSolution.ACoinGuessingGame(inputs), expected);

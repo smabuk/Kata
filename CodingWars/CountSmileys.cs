@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using NUnit.Framework;
 
 namespace CodeWarsKatas
 {
-    public static class CountSmileysKata
-    {
+	public static class CountSmileysKata
+	{
 		public static int CountSmileys(string[] smileys)
 		{
 			List<string> validSmileys = new List<string> {
