@@ -56,7 +56,7 @@ namespace Codingame
 			//int r1 = int.Parse(Console.ReadLine());
 			int r1 = int.Parse(args[0]);
 
-			for (int i = r1 - ((r1.ToString().Length) * 10); i < r1; i++)
+			for (int i = r1 - ((r1.ToString().Length) * 9); i < r1; i++)
 			{
 				if (i > 0)
 				{
