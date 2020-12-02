@@ -48,7 +48,7 @@ using Xunit;
  * 
  */
 
-namespace Codingame
+namespace CodinGame
 {
 
 	static class SudokuValidatorSolution

@@ -67,7 +67,7 @@ using Xunit;
 
  */
 
-namespace Codingame
+namespace CodinGame
 {
 
 	public static class IntExtensions

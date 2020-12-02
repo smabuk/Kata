@@ -173,7 +173,7 @@ using System.Collections.Generic;
  * 
  */
 
-namespace Codingame
+namespace CodinGame
 {
     public class MarsLanderEpisode1
     {
@@ -181,7 +181,7 @@ namespace Codingame
         const int    MIN_THRUST = 0;
         const int    MAX_THRUST = 4;
 
-		static void Main(string[] args)
+		static void MarsLanderEpisode1Main(string[] args)
         {
             string[] inputs;
             int surfaceN = int.Parse(Console.ReadLine()); // the number of points used to draw the surface of Mars.

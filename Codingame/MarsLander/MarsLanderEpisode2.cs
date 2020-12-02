@@ -170,7 +170,7 @@
  * 
  */
 
-namespace Codingame
+namespace CodinGame
 {
 	public class MarsLanderEpisode2
 	{
@@ -180,7 +180,7 @@ namespace Codingame
 		const double MIN_THRUST_ANGLE = -90.0;
 		const double MAX_THRUST_ANGLE = 90.0;
 
-		static void Main(string[] args)
+		static void MarsLanderEpisode2Main(string[] args)
 		{
 			string[] inputs;
 			int surfaceN = int.Parse(Console.ReadLine()); // the number of points used to draw the surface of Mars.
