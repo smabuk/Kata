@@ -141,7 +141,7 @@ namespace HackerEarth
 			return current;
 		}
 
-		[Theory]
+		[Theory(Skip = "Was looking at this for someone else")]
 		[InlineData(new string[] { "1", "7", "3 2 3 -1 3 -1 1" }, new long[] { 7 })]
 		[InlineData(new string[] { "1", "7", "3 4 5 1 3 -1 1" }, new long[] { 9 })]
 		[InlineData(new string[] { "2", "7", "3 2 3 -1 3 -1 1", "7", "3 4 5 1 3 -1 1" }, new long[] { 7, 9 })]
