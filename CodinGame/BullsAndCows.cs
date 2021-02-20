@@ -18,9 +18,12 @@ using Xunit;
 namespace CodinGame {
 	public static class BullsAndCowsSolution {
 		public static string BullsAndCowsMain(string[] args) {
+			List<(string guess, int bulls, int cows)> turns = new List<(string guess, int bulls, int cows)>();
+			List<char> impossibleChars = new List<char>();
+			string answer = "";
+
 			//int N = int.Parse(Console.ReadLine());
 			int N = int.Parse(args[0]);
-			List<(string guess, int bulls, int cows)> turns = new List<(string guess, int bulls, int cows)>();
 			for (int i = 0; i < N; i++) {
 				//string[] inputs = Console.ReadLine().Split(' ');
 				string[] inputs = args[i + 1].Split(' ');
@@ -28,20 +31,26 @@ namespace CodinGame {
 				int bulls = int.Parse(inputs[1]);
 				int cows = int.Parse(inputs[2]);
 				if (bulls == guess.Length) {
+					// Console.WriteLine(guess);
 					return guess;
+				}
+				if (bulls + cows == 0) {
+					impossibleChars = impossibleChars.Concat(guess.ToList()).Distinct().ToList();
 				}
 				turns.Add((guess, bulls, cows));
 			}
 
-			string answer = "";
-
-			for (int i = 0; i < 10000; i++) {
+			for (int i = 0; i <= 9999; i++) {
 				answer = $"{i:0000}";
+
+				if (AnswerContainsImpossibleChars(answer, impossibleChars)) {
+					continue;
+				}
 
 				bool theAnswer = true;
 				foreach ((string guess, int bulls, int cows) in turns) {
-					(int bulls, int cows) bullsandcows = GetBullsAndCows(guess, answer);
-					if (bullsandcows.bulls != bulls || bullsandcows.cows != cows) {
+					(int bulls, int cows) result = CalculateBullsAndCows(guess, answer);
+					if (result.bulls != bulls || result.cows != cows) {
 						theAnswer = false;
 						break;
 					}
@@ -51,32 +60,36 @@ namespace CodinGame {
 				}
 			}
 
+			// Console.WriteLine(answer);
 			return answer;
 
 		}
 
-		public static (int bulls, int cows) GetBullsAndCows(string guess, string answer) {
+		static bool AnswerContainsImpossibleChars(string answer, List<char> impossibleChars) 
+			=> answer.Any(c =>impossibleChars.Contains(c));
+
+		static (int bulls, int cows) CalculateBullsAndCows(string guess, string answer) {
 			int bulls = 0;
 			int cows = 0;
-			char[] answerArray = answer.ToCharArray();
-			char[] guessArray = guess.ToCharArray();
+			char[] answerChars = answer.ToCharArray();
+			char[] guessChars = guess.ToCharArray();
 
 			for (int i = 0; i < guess.Length; i++) {
-				if (guess[i] == answerArray[i]) {
+				if (guess[i] == answer[i]) {
 					bulls++;
-					answerArray[i] = 'X';
-					guessArray[i] = 'X';
+					answerChars[i] = 'X';
+					guessChars[i] = 'X';
 				}
 			}
 
 			for (int i = 0; i < guess.Length; i++) {
-				if (guessArray[i] == 'X') {
+				if (guessChars[i] == 'X') {
 					continue;
 				}
-				if (Array.IndexOf(answerArray, guess[i]) >= 0) {
+				if (Array.IndexOf(answerChars, guessChars[i]) >= 0) {
 					cows++;
-					answerArray[answer.IndexOf(guess[i])] = 'X';
-					guessArray[i] = 'X';
+					answerChars[answer.IndexOf(guessChars[i])] = 'X';
+					guessChars[i] = 'X';
 				}
 			}
 
